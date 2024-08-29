@@ -84,49 +84,52 @@ class _CustomTableState<T> extends State<CustomTable<T>> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         if (widget.hasSearch)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width:
-                    widget.searchOnRight ? null : 300, // Adjust width as needed
-                child: CustomTextField(
-                  label: 'Search',
-                  controller: searchController,
-                  icon: Icons.search,
-                  isRequired: false,
-                  onChanged: (query) {
-                    _filterRows(query);
-                  },
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0,right: 30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  width:
+                      widget.searchOnRight ? null : 300, // Adjust width as needed
+                  child: CustomTextField(
+                    label: 'Search',
+                    controller: searchController,
+                    icon: Icons.search,
+                    isRequired: false,
+                    onChanged: (query) {
+                      _filterRows(query);
+                    },
+                  ),
                 ),
-              ),
-              widget.showAddButton
-                  ? ElevatedButton(
-                      onPressed: widget.onAddButtonPressed,
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(10), // Square shape
+                widget.showAddButton
+                    ? ElevatedButton(
+                        onPressed: widget.onAddButtonPressed,
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(10), // Square shape
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 16.0), // Equal padding for square look
+                          minimumSize: const Size(
+                              50, 50), // Set minimum size to ensure it's square
+                          elevation:
+                              5, // Optional: Add elevation for shadow effect
+                          backgroundColor: Colors.blueAccent, // Background color
                         ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 16.0), // Equal padding for square look
-                        minimumSize: const Size(
-                            50, 50), // Set minimum size to ensure it's square
-                        elevation:
-                            5, // Optional: Add elevation for shadow effect
-                        backgroundColor: Colors.blueAccent, // Background color
-                      ),
-                      child: const Text(
-                        "Add",
-                        style: TextStyle(
-                          fontSize: 16, // Adjust font size as needed
-                          color: Colors.white, // Text color
+                        child: const Text(
+                          "Add",
+                          style: TextStyle(
+                            fontSize: 16, // Adjust font size as needed
+                            color: Colors.white, // Text color
+                          ),
                         ),
-                      ),
-                    )
-                  : Container()
-            ],
+                      )
+                    : Container()
+              ],
+            ),
           ),
         Flexible(
           flex: 4,
@@ -145,7 +148,7 @@ class _CustomTableState<T> extends State<CustomTable<T>> {
                 columnWidths: {
                   for (var i = 0; i < columns.length; i++)
                     i: FixedColumnWidth(MediaQuery.of(context).size.width /
-                        10), // Adjust width as needed
+                        12), // Adjust width as needed
                 },
                 children: [
                   TableRow(

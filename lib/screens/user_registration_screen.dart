@@ -59,7 +59,8 @@ class _UserRegistrationFormState extends State<UserRegistrationForm> {
     return ResponsiveWrapper.builder(
       Scaffold(
         appBar: AppBar(
-          title: const Text('User List'),
+          title: const Text('User Registration'),
+          centerTitle: true,
         ),
         drawer: kIsWeb ? const CustomDrawer() : null,
         body: Padding(
@@ -184,12 +185,12 @@ class _UserRegistrationFormState extends State<UserRegistrationForm> {
                   ),
                 ),
         ),
-        floatingActionButton: FloatingActionButton(
+        /*floatingActionButton: FloatingActionButton(
           onPressed: () {
             userFormDialog(context);
           },
           child: const Icon(Icons.add),
-        ),
+        ),*/
       ),
       breakpoints: [
         const ResponsiveBreakpoint.resize(350, name: MOBILE),
